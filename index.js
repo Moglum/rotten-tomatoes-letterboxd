@@ -5,7 +5,7 @@ const { DateTime } = require('luxon');
 const URI = 'https://www.rottentomatoes.com/napi/userProfile/movieRatings/';
 
 // Change to your Rotten Tomatoes user ID
-const USER_ID = '';
+const USER_ID = 'YOUR_ID';
 
 async function getRatings(cursor) {
   try {
