@@ -36,6 +36,8 @@ it, submit an issue and I'll try to help ;)
 4. Run `npm start` It might take a while, the script gets max 20 reviews
    with each request.
 5. When finished you should have a file 'importMe.csv' waiting for you
+   (another file gets created - the raw Rotten Tomatoes format - rawRatings.json
+   you can ignore it)
 6. Import the file right here https://letterboxd.com/import/
 7. Profit
 
