@@ -32,13 +32,16 @@ function createImportFile(ratings) {
   let out = 'Title, Year, Directors, WatchedDate, Rating, Review\n'
 
   ratings.forEach(r => {
+    if (!r) {
+      return
+    }
     if (!r.displayName || r.displayName == '' || !r.item) {
       return
     }
 
     let {
       review: { age, score, comment },
-      item: { fullTitle, releaseYear, rt_info },
+      item: { title, releaseYear, rt_info },
     } = r
 
     let director = ''
@@ -56,7 +59,7 @@ function createImportFile(ratings) {
     comment = comment.replace(/\n/g, '<br>')
     comment = comment.replace(/\"/g, '\\"')
 
-    out += `"${fullTitle}",${releaseYear},"${director}",`
+    out += `"${title}",${releaseYear},"${director}",`
     out += `${watchedDate},${score},"${comment}"\n`
   })
 
