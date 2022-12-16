@@ -18,13 +18,7 @@ it, submit an issue and I'll try to help ;)
 - Your [Rotten Tomatoes](https://www.rottentomatoes.com) user ID
 
   Go to your Profile and it's the last part of the URL -
-  `https://www.rottentomatoes.com/user/id/<your ID/`
-
-- Your Rotten Tomatoes Profile must be public at least for the duration of the script running
-  (it uses a public API to get your ratings, no authentication needed)
-
-  Go to [Profile Privacy settings](https://www.rottentomatoes.com/user/account/profile_preferences/)
-  and set visibility to: _Show to all. Everybody (including anonymous users) can see my profile._
+  `https://www.rottentomatoes.com/user/id/<your ID>/`
 
 - [Letterboxd](https://letterboxd.com) account to import the reviews
 
@@ -32,7 +26,8 @@ it, submit an issue and I'll try to help ;)
 
 1. Clone or download the repo
 2. Run `npm install` in the root folder of the repo to install the dependencies
-3. Open `index.js` and replace `YOUR_ID` with your Rotten Tomatoes ID on line 8
+3. Log into Rotten Tomatoes. Save the output of `https://www.rottentomatoes.com/napi/userProfile/movieRatings/<your ID>`
+   to a file called `input.json` in this project's root.
 4. Run `npm start` It might take a while, the script gets max 20 reviews
    with each request.
 5. When finished you should have a file 'importMe.csv' waiting for you
@@ -43,6 +38,4 @@ it, submit an issue and I'll try to help ;)
 
 # Known issues
 
-- The Rotten Tomatoes API doesn't return the exact date for each review, just an
-  offset. Like `3 days`, `5 months` or `6 years`. I use these offsets
-  to approximate the review date: `TODAY - offset`
+- Rotten Tomatoes no longer provides the Director.
