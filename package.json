@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "luxon": "^1.19.2",
+    "luxon": "^2.5.2",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7"
   }
