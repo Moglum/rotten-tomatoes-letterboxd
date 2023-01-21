@@ -6,14 +6,20 @@ const URI = 'https://www.rottentomatoes.com/napi/userProfile/movieRatings/'
 
 // Change to your Rotten Tomatoes user ID
 const USER_ID = 'YOUR_ID'
+const COOKIE = 'YOUR_COOKIE'
 
 async function getRatings(cursor) {
   try {
     let res = await rp({
       uri: URI + USER_ID,
       json: true,
-      qs: { endCursor: cursor },
-    })
+      qs: {
+        endCursor: cursor,
+      },
+      headers: {
+        cookie: COOKIE,
+      },
+    });
 
     console.log('Got a chunk.')
 
@@ -47,14 +53,11 @@ function createImportFile(ratings) {
     let director = ''
     rt_info ? (director = rt_info.director.name) : (director = '')
 
-    let ageParts = age.split(' ')
-    let ageOffset = JSON.parse(`{ "${ageParts[1]}" : ${ageParts[0]}}`)
+    var date = new Date(age);
+    var watchedDate = date.getFullYear() + "-" + (date.getMonth() + 1).toString().padStart(2, "0") + "-" + date.getDate().toString().padStart(2, "0");
 
-    let watchedDate = DateTime.utc()
-      .minus(ageOffset)
-      .toFormat('yyyy-MM-dd')
-
-    score = score || ''
+    score = score || "";
+    comment = comment || "";
 
     comment = comment.replace(/\n/g, '<br>')
     comment = comment.replace(/\"/g, '\\"')
