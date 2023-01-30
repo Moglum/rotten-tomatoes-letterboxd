@@ -33,13 +33,16 @@ it, submit an issue and I'll try to help ;)
 1. Clone or download the repo
 2. Run `npm install` in the root folder of the repo to install the dependencies
 3. Open `index.js` and replace `YOUR_ID` with your Rotten Tomatoes ID on line 8
-4. Run `npm start` It might take a while, the script gets max 20 reviews
+4. Open `index.js` and replace `COOKIE` with the cookie you retrieve from the screenshot below. See the discussion in in #8 as to why this is necessary.
+5. Run `npm start` It might take a while, the script gets max 20 reviews
    with each request.
-5. When finished you should have a file 'importMe.csv' waiting for you
+6. When finished you should have a file 'importMe.csv' waiting for you
    (another file gets created - the raw Rotten Tomatoes format - rawRatings.json
    you can ignore it)
-6. Import the file right here https://letterboxd.com/import/
-7. Profit
+7. Import the file right here https://letterboxd.com/import/
+8. Profit
+
+<img width="1493" alt="Screenshot 2023-01-21 at 3 36 41 PM" src="https://user-images.githubusercontent.com/1892194/213886227-05096d0a-2778-40e1-9b15-a4e13e8fe651.png">
 
 # Known issues
 
