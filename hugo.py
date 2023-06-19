@@ -3,11 +3,20 @@ import os
 from datetime import datetime
 
 
+def format_rating(rating):
+    full_stars = "⭐" * int(rating)
+    if rating % 1 >= 0.5:  # Check if there's a half star
+        half_star = "🌟"
+    else:
+        half_star = ""
+    return full_stars + half_star
+
+
 # Function to create markdown file
 def create_md_file(
     author, title, date, description, tags, rating, review, output_dir, pageLink
 ):
-    filename = f"{output_dir}/{title.lower().replace(' ', '_').replace(':', '_')}.md"
+    filename = f"{output_dir}/{title.lower().replace(' ', '_').replace(':', '_').replace('__', '_')}.md"
 
     with open(filename, "w") as f:
         try:
@@ -21,11 +30,11 @@ def create_md_file(
                 f.write(f'    "{tag}",\n')
             f.write("]\n")
             f.write("+++\n")
-            f.write(f"Rating ({rating:.1f}  /5): {'⭐' * int(rating)}\n")
+            f.write(f"Rating: {format_rating(rating)}\n")
             f.write("\n")
             f.write(f"{review}\n")
             f.write("\n")
-            f.write(f"\n[More info here](www.rottentomatoes.com/{pageLink})")
+            f.write(f"\n[🍅 Rotten Tomatoes Info 🍅](www.rottentomatoes.com/{pageLink})")
         except Exception as e:
             print("ERROR:", title, e, rating)
 
